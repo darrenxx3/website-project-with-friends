@@ -4,23 +4,19 @@ const path = require("path");
 const app = express();
 
 const connectDB = require('./config/db');
+const isLogged = require('./middlewares/isLogged')
 const userAPI = require('./routes/user')
 
 const passport = require('./config/passport')
 const MongoStore = require("connect-mongo");
 const session = require('express-session');
+const { isSymbolObject } = require('util/types');
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
 //Load dynamic page
 app.set("view engine", "ejs");
-//Load static page
-app.use(express.static(path.join(__dirname, "public/pages")));
-//Server static file
-app.use('/static', express.static(path.join(__dirname, "public")));
-//User API
-app.use('/api', userAPI);
 //Set up session
 app.use(session({
     store: new MongoStore({
@@ -28,10 +24,20 @@ app.use(session({
     }),
     resave: false,
     saveUninitialized: true,
-    secret: "very secret this is"
+    secret: "anything"
 }));
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session());    
+//Load static page
+app.use('/admin', isLogged);
+app.use(express.static(path.join(__dirname, "public/pages")));
+//Server static file
+app.use('/static', express.static(path.join(__dirname, "public")));
+//User API
+app.use('/api', userAPI);
+
+
+
 
 
 
