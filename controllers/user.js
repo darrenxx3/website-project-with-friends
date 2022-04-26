@@ -41,6 +41,7 @@ const insertUser = async (req, res) => {
 
         req.login(user, (logErr) => {
             if(logErr) return console.log(logErr);
+            console.log(req);
             return res.status(200).json({redirect :'/admin'});
         })
     })    
@@ -53,7 +54,8 @@ const findUsers = async (req, res) => {
     })
     .catch(err => {
         res.status(500).json({error: err.message});
-    })
+    });
+    console.log(req.user);
 }
 
 const authLogin = async (req, res, next) => {
@@ -63,15 +65,33 @@ const authLogin = async (req, res, next) => {
         
         req.logIn(user, (err) => {
             if(err) return res.status(400).json({ errors: err });
-            
-            //sucess
+            console.log(req.session);
             res.json({redirect: '/admin'});
         })
     }) (req, res, next);
 }
 
+const getLink = (req, res) => {
+    const { username } = req.params;
+    
+    Links.find({ "username": username }, (err, docs) => {
+        if(err){
+            console.log(err);
+            return;
+        }
+
+        if(docs.length){
+            console.log(docs);
+            res.render('affiliate', {username: username})
+        }else{
+            res.render('404');
+        }
+    })
+}
+
 module.exports = {
     insertUser,
     findUsers,
-    authLogin
+    authLogin,
+    getLink
 }

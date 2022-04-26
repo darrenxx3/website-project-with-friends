@@ -23,7 +23,7 @@ passport.use(
                     if (isMatch) {
                         return done(null, user);
                     } else {
-                        return done(null, false, { message: "Wrong Password" });
+                        return done(null, false, { message: user.password });
                     }
                 })
             })

@@ -4,17 +4,18 @@ function submitUser() {
 
     axios.post('/api/login', {
         email: inputEmail.value,
-        password: inputPassword.value
-    })
+        password: inputPassword.value,
+    }, { withCredentials: true })
         .then((response) => {
-            console.log(response);
             if(response.data.redirect){
                 window.location = "/admin";
             }
+            return;
         })
         .catch((error) => {
             console.log("Wrong password!");
             console.log(error);
+            return;
         })
 }
 
@@ -23,3 +24,6 @@ const clearForm = () => {
     inputEmail.innerText = "";
     inputPassword.innerText = "";
 }
+
+const btnSubmit = document.getElementById("btnSubmit");
+btnSubmit.addEventListener("click", submitUser);

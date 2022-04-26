@@ -4,11 +4,11 @@ function submitUser() {
     const inputPassword = document.getElementById("password");
 
     console.log(inputUsername.value);
-    axios.post('/api/register', {
+    axios.post('/api/signup', {
         username: inputUsername.value,
         email: inputEmail.value,
         password: inputPassword.value
-    })
+    }, {withCredentials: true})
         .then((response) => {
             if(response.data.redirect){
                 window.location = "/admin"

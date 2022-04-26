@@ -18,11 +18,11 @@ const LinkSchema = new mongoose.Schema({
                 type: String, required: true
             },
             Image : {
-                data: Buffer,
-                contentType: String
+                type: String, required: true
             },
             Price : {
-                type: Number
+                Currency : String,
+                Value: Number
             }
         }
     ]

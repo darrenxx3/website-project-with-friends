@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <input type="text" placeholder="Title">
-    <input type="text" placeholder="URL">
-    <input type="number" placeholder="price">
-    <input type="file" placeholder="Insert Image">
-    <button>Upload File</button>
+    <form action="/api/upload" method="post" enctype='multipart/form-data'>
+        <input type="text" placeholder="Title" name="title">
+        <input type="text" placeholder="URL" name="url">
+        <select name="currency">
+            <option disabled selected value> -- select curerncy -- </option>
+            <option value="Rp.">Rupiah</option>
+            <option value="$">US Dollar</option>
+        </select>
+        <input type="number" placeholder="price" name="price">
+        <input type="file" placeholder="Insert Image" name="image">
+        <button type="submit">Upload File</button>
+    </form>
 </body>
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="add.js"></script> -->
 </html>
