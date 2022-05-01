@@ -1,29 +1,48 @@
+import { isLink, isImage, isFilled } from '../../static/js/validation.js';
+import { sendData } from '../../static/js/crud.js';
 
-function submitUser() {
-    // const inputEmail = document.getElementById("email");
-    // const inputPassword = document.getElementById("password");
+const button = document.getElementById("btnSub");
+button.addEventListener("click", async (e) => {
+    var Title = document.getElementById("title");
+    var URL = document.getElementById("url");
+    var Currency = document.getElementById("currency");
+    var Price = document.getElementById("price");
+    var Image = document.getElementById("image");
+    
 
-    axios.post('/api/upload', {
-        // email: inputEmail.value,
-        // password: inputPassword.value,
-    })
-        .then((response) => {
-            console.log(response);
-            // if(response.data.redirect){
-            //     window.location = "/admin";
-            // }
-        })
-        .catch((error) => {
-            console.log("Wrong password!");
-            console.log(error);
-        })
-}
+    if(!isFilled("formAdd")) { 
+        swal("Please fill all the data"); 
+        return; 
+    };
 
-// const clearForm = () => {
-//     inputUsername.innerText = "";
-//     inputEmail.innerText = "";
-//     inputPassword.innerText = "";
-// }
+    if(!isLink(URL.value)) { 
+        swal("Please fill with valid URL"); 
+        URL.focus();
+        return; 
+    };
+    
+    if(!isImage(Image)) { 
+        swal("Please fill with valid image file"); 
+        return; 
+    };
 
-const btnSubmit = document.getElementById("btnSubmit");
-btnSubmit.addEventListener("click", submitUser);
+    if(isNaN(Price.value)){
+        swal("Please fill price with valid value");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('title', Title.value);
+    formData.append('url', URL.value);
+    formData.append('currency', Currency.value);
+    formData.append('price', Price.value);
+    formData.append('image', Image.files[0]);
+
+    sendData(
+        '/api/upload',
+        'POST',
+        formData,
+        '/admin');
+    
+});
+

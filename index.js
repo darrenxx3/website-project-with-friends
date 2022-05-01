@@ -47,7 +47,9 @@ app.use('/', routePage);
 app.use(express.static(path.join(__dirname, "public/pages")));  
 app.use('/api', routeAPI);
 
-
+app.use((req, res) => {
+    res.status(404).render('404');
+})
 
 const startServer = async () => {
     try{

@@ -1,5 +1,7 @@
+const bcrypt = require('bcrypt');
 const normalizeUrl = require('normalize-url');
 const Links = require('../models/Links');
+const Users = require('../models/Users');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 const loadAdmin = async (req, res) => {
@@ -65,7 +67,7 @@ const uploadData = async (req, res) => {
         }
     )
 
-    res.redirect('/admin');
+    res.status(200).json({ Sucess: "Data successfully inserted!" });
 }
 
 const updateData = async (req, res) => {
@@ -116,7 +118,7 @@ const deleteData = async (req, res) => {
             multi: true
         },
         (err, obj) => {
-            if(err) console.log(err);
+            if (err) console.log(err);
 
             console.log(obj);
             res.redirect('/admin');
@@ -124,10 +126,60 @@ const deleteData = async (req, res) => {
     )
 }
 
+const loadProfile = async (req, res) => {
+    const { username } = req.user;
+
+    Users.findOne({ username: username },
+        (err, obj) => {
+            if (err) { res.status(404); return; }
+
+            console.log(obj);
+            res.render('adminProfile', { User: obj });
+        })
+
+}
+
+const updateUser = async (req, res) => {
+    const { username, password } = req.user;
+    const { instagram, tiktok, curPassword, newPassword } = req.body;
+
+    bcrypt.compare(curPassword, password, async (err, response) => {
+        if (err || !response) {
+            console.log("Salah password")
+            res.sendStatus(402);
+        } else {
+            let linkIMG = (req.file) ? '/images/' + req.file.filename : null;
+
+            var updtUser = {
+                instagram: instagram,
+                tiktok: tiktok,                
+            };
+
+            if (req.file) updtUser.image = '/images/' + req.file.filename;
+            if (newPassword) updtUser.password = await bcrypt.hash(newPassword, 10);
+
+
+            Users.updateOne({ 'username': username },
+                {
+                    $set: updtUser
+                },
+                (err, doc) => {
+                    if (err) { console.log(err); res.sendStatus(402); return; };
+
+                    console.log(doc);
+                    res.sendStatus(200);
+                })
+        }
+    });
+
+}
+
 module.exports = {
     loadAdmin,
     uploadData,
     loadEdit,
     updateData,
-    deleteData
+    deleteData,
+    loadProfile,
+    updateUser,
 }

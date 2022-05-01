@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/adminProfile.css">
+    <title>Admin | Profile</title>
+
+</head>
+
+<body>
+    <div id="desain">
+        <%- include('adminNavbar') -%>
+
+            <!--KOnten-->
+            <div class="container-fluid d-flex justify-content-center align-items-center">
+                <div class="card py-4 shadow p-4 mb-4 bg-body rounded">
+                    <h5>My Profile</h5>
+                    <div class="mt-3"> <span class="accounts"></span>
+                        <!--mau diapus entar-->
+                        <div class="d-flex justify-content-center">
+                            <div class="d-flex flex-column mr-1">
+                                <div class="d-flex flex-row">
+                                    <div class="profile-pic">
+                                        <div class="picture-container">
+                                            <div class="picture">
+                                                <% if(User.image) {%>
+                                                <img src="<%= User.image %>" class="picture-src"
+                                                    id="wizardPicturePreview" title="">
+                                                <% }else{ %>
+                                                    <img src="../static/images/blankProfile.png" class="picture-src"
+                                                    id="wizardPicturePreview" title="">
+                                                <% } %>
+                                                <input type="file" id="wizard-picture" class="">
+                                            </div>
+                                            <h6 class="">Choose Picture</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <form id="formProfile">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="inputbox mt-3 pt-2">
+                                            <input type="text" id="username" class="form-control" value="<%= User.username %>" autocomplete="off">
+                                            <span>Username</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="inputbox mt-3 pt-2">
+                                            <input type="text" id="instagram" class="form-control" value="<%= User.instagram %> autocomplete="off"">
+                                            <span>Instagram</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="inputbox mt-3 pt-2">
+                                            <input type="text" id="tiktok" class="form-control" value="<%= User.tiktok %> autocomplete="off"">
+                                            <span>Tiktok</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="inputbox mt-3 pt-2">
+                                            <input type="password" id="curPass" class="form-control" autocomplete="off">
+                                            <span>New Password</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="inputbox mt-3 pt-2">
+                                        <input type="password" id="newPass" class="form-control" autocomplete="off">
+                                        <span>Confirm Password</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button id="btnProfile" class="btn btn-primary w-100" type="button">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        <hr>
+                        <div class="mt-4">
+                            <h4>Dangerous Section</h4>
+                            <p>Warning! if you click delete account your all data on this account will forever gone.
+                                There's no option between yes or no, so act wisely. We can't restore your account.
+                            </p>
+                            <a href="#" class="btn btn-outline-danger w-50" role="button">Delete Account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%- include("adminNavbar") -%>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../static/js/admin/editProfile.js"></script>
+</body>
+
+</html>

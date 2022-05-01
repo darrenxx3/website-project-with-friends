@@ -21,8 +21,8 @@ const LinkSchema = new mongoose.Schema({
                 type: String, required: true
             },
             Price : {
-                Currency : String,
-                Value: Number
+                Currency : {type: String, required: true},
+                Value: {type: Number, required: true},
             }
         }
     ]

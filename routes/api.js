@@ -1,5 +1,5 @@
 const { insertUser, findUsers, authLogin } = require('../controllers/user');
-const { uploadData, updateData, deleteData }  = require("../controllers/admin");
+const { uploadData, updateData, deleteData, updateUser }  = require("../controllers/admin");
 const express = require("express");
 const router = express.Router({mergeParams: true});
 // const upload = require('../middlewares/multerUpload');
@@ -21,6 +21,9 @@ const upload = multer({
     storage: Storage
 })
 
+router.route('/users')
+    .get(findUsers);
+
 router.route('/login')
     .post(authLogin);
 
@@ -36,11 +39,15 @@ router.route('/update/:id')
 router.route('/delete/:id')
     .post(deleteData);
 
+router.route('/profile')
+    .post(upload.single("image"), updateUser);
+
 router.route('/logout')
     .get((req, res) => {
         console.log(req.user);
         req.logOut();
         res.redirect('/login');
     })
+
 
 module.exports = router;
