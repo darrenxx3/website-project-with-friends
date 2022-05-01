@@ -26,7 +26,24 @@ const userSchema = new mongoose.Schema({
     },
     tiktok: {
         type: String
-    }
+    },
+    Links : [
+        {
+            Title: {
+                type: String, max: 100, required: true                    
+            },
+            URL : {
+                type: String, required: true
+            },
+            Image : {
+                type: String, required: true
+            },
+            Price : {
+                Currency : {type: String, required: true},
+                Value: {type: Number, required: true},
+            }
+        }
+    ]
 
 })
 

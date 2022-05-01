@@ -11,7 +11,7 @@
 <body>
     <div class="user">
         <img src="<%= user.image%>" alt="">
-        <h4>@<%= user.userna,e %></h4>
+        <h4>@<%= user.username %></h4>
     </div>
     <div class="container">
         <!-- Product Card -->
@@ -32,10 +32,11 @@
     <footer>
         <div class="content">
             <div class="media-icons">
-               
-                <a href="#"><i class="fa fa-twitter"></i></a>
+               <% if(user.instagram) { %>
                 <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-google"></i></a>
+                <% }else if(user.tiktok){ %>
+                <a href="#"><i class="fa fa-tiktok"></i></a>
+                <% } %>
             </div>
         </div>
     </footer>

@@ -1,20 +1,20 @@
 const bcrypt = require('bcrypt');
 const normalizeUrl = require('normalize-url');
-const Links = require('../models/Links');
 const Users = require('../models/Users');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 const loadAdmin = async (req, res) => {
     const { username } = req.user;
 
-    Links.findOne({ "username": username }, (err, obj) => {
+    Users.findOne({ "username": username }, (err, obj) => {
         if (err) {
             console.log(err);
             return;
         }
 
-        const { username, Links } = obj;
-        res.render('admin', { username: username, links: Links });
+        const { Links } = obj;
+        console.log(Links);
+        res.render('admin', { links: Links });
     })
 }
 
@@ -24,7 +24,7 @@ const loadEdit = async (req, res) => {
 
     console.log(id);
 
-    Links.findOne({
+    Users.findOne({
         "username": username
     },
         {
@@ -44,7 +44,7 @@ const loadEdit = async (req, res) => {
 }
 
 const uploadData = async (req, res) => {
-    const { id } = req.user;
+    const { username } = req.user;
     const { title, url, price, currency } = req.body
 
     const link = {
@@ -57,8 +57,8 @@ const uploadData = async (req, res) => {
         }
     }
 
-    const UpLink = await Links.findOneAndUpdate({
-        userID: id
+    const UpLink = await Users.findOneAndUpdate({
+        "username" : username
     },
         {
             $push: {
@@ -66,8 +66,9 @@ const uploadData = async (req, res) => {
             }
         }
     )
+    console.log(UpLink)
 
-    res.status(200).json({ Sucess: "Data successfully inserted!" });
+    res.sendStatus(200);
 }
 
 const updateData = async (req, res) => {
@@ -79,20 +80,19 @@ const updateData = async (req, res) => {
     const updatedData = {
         "Links.$.Title": title,
         "Links.$.URL": normalizeUrl(url),
-        "Links.$.Image": '/images/' + req.file.filename,
         "Links.$.Price": {
             "Price.$.Currency": currency,
             "Price.$.Value": price
         }
     }
 
-    await Links.updateOne({ 'username': username, 'Links._id': ObjectId(id) },
+    if(req.file) updatedData.assign({'Links.$.Image': '/images/' + req.file.filename});
+
+    await Users.updateOne({ 'username': username, 'Links._id': ObjectId(id) },
         {
             '$set':
             {
-                "Links.$.Title": title,
-                "Links.$.URL": normalizeUrl(url),
-                "Links.$.Image": '/images/' + req.file.filename,
+                updatedData
             }
         }
     ).then((err) => {
@@ -107,7 +107,7 @@ const deleteData = async (req, res) => {
     const { username } = req.user;
 
     console.log(id);
-    Links.updateOne({ 'username': username },
+    Users.updateOne({ 'username': username },
         {
             "$pull": {
                 "Links": { "_id": ObjectId(id) }
@@ -148,7 +148,6 @@ const updateUser = async (req, res) => {
             console.log("Salah password")
             res.sendStatus(402);
         } else {
-            let linkIMG = (req.file) ? '/images/' + req.file.filename : null;
 
             var updtUser = {
                 instagram: instagram,
@@ -158,17 +157,17 @@ const updateUser = async (req, res) => {
             if (req.file) updtUser.image = '/images/' + req.file.filename;
             if (newPassword) updtUser.password = await bcrypt.hash(newPassword, 10);
 
-
             Users.updateOne({ 'username': username },
-                {
-                    $set: updtUser
-                },
-                (err, doc) => {
-                    if (err) { console.log(err); res.sendStatus(402); return; };
+            {
+                $set: updtUser
+            },
+            (err, doc) => {
+                if(err) { console.log(err); res.sendStatus(404); return; };
 
-                    console.log(doc);
-                    res.sendStatus(200);
-                })
+                console.log(doc);
+                res.sendStatus(200);
+            }
+            )
         }
     });
 
@@ -182,4 +181,4 @@ module.exports = {
     deleteData,
     loadProfile,
     updateUser,
-}
+};

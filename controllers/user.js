@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const normalizeEmail = require('normalize-email');
 const slug = require('slug');
 const Users = require("../models/Users");
-const Links = require("../models/Links");
 
 const insertUser = async (req, res) => {
     const {username, email, password } = req.body;
@@ -74,18 +73,14 @@ const authLogin = async (req, res, next) => {
 const getLink = (req, res) => {
     const { username } = req.params;
     
-    Links.find({ "username": username }, (err, docs) => {
+    Users.findOne({ "username": username }, (err, docs) => {
         if(err){
             console.log(err);
+            res.render('404');
             return;
         }
-
-        if(docs.length){
-            console.log(docs);
-            res.render('affiliate', {username: username})
-        }else{
-            res.render('404');
-        }
+        
+        res.render('linkUser', {user: docs})
     })
 }
 

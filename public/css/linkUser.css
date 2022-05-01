@@ -50,11 +50,11 @@ body {
 
 .user {
     text-align: center;
-    font-size: 28px;
+    font-size: 18px;
 }
 
 .user img {
-    width: 160px;
+    width: 80px;
     border-radius: 50%;
     margin-top: 5%;
 }
