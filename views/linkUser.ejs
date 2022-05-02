@@ -7,6 +7,7 @@
     <title>Affiliate Page</title>
     <link rel="stylesheet" href="/static/css/linkUser.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="user">
@@ -33,10 +34,15 @@
         <div class="content">
             <div class="media-icons">
                <% if(user.instagram) { %>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <% }else if(user.tiktok){ %>
-                <a href="#"><i class="fa fa-tiktok"></i></a>
-                <% } %>
+                <a target="_blank" href="https://www.instagram.com/<%= user.instagram %>">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <% } %> 
+                <%//if(user.tiktok){ %>
+                <a target="_blank" href="https://www.tiktok.com/@$<%= user.tiktok %>"">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <% //} %>
             </div>
         </div>
     </footer>

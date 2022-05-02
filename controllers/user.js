@@ -32,12 +32,6 @@ const insertUser = async (req, res) => {
     user.save((err, user) => {
         if(err) console.log(err);
 
-        const link = new Links({
-            userID : user.id,
-            username : user.username
-        })
-        link.save()
-
         req.login(user, (logErr) => {
             if(logErr) return console.log(logErr);
             console.log(req);

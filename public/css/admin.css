@@ -1,7 +1,17 @@
-.thumb-post {
-    object-fit: contain; /* Do not scale the image */
-    object-position: center; /* Center the image within the element */
+body{
+    padding-top: 70px;
+}
+
+.thumbnail {
     width: 100%;
-    max-height: 100px;
-    margin-bottom: 1rem;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.thumb-post {
+    object-fit: cover; /* Do not scale the image */
+    object-position: center center; /* Center the image within the element */
+    width: 100%;
+    height: 100%;
 }
