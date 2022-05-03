@@ -17,12 +17,12 @@
     <%- include("adminNavbar") -%>
 
       <div class="row">
-        <div class="col-sm-2 mt-1">
+        <div class="col-md-2 mt-1">
           <a href="/admin/add" class="btn btn-primary col-12">
             Add Item
           </a>
         </div>
-        <div class="col-sm-10 mt-1">
+        <div class="col-md-10 mt-1">
           <div class="input-group">
             <input class="form-control" type="text">
             <div class="input-group-append">
@@ -39,16 +39,16 @@
               <div class="card shadow-0 border rounded-3">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-4 col-lg-2 col-xl-2 mb-4 mb-lg-0">
+                    <div class="col-4 col-md-4 col-lg-2 col-xl-2 mb-4 mb-lg-0">
                       <div class="thumbnail">
                         <img src="<%= link.Image %>" class="thumb-post img img-responsive full-width rounded" />
                       </div>
                     </div>
-                    <div class="col-md-6 col-lg-8 col-xl-8 my-auto">
+                    <div class="col-8 col-md-8 col-lg-8 col-xl-8 my-auto">
                       <!-- Judul -->
-                      <h5>
+                      <h2>
                         <%= link.Title %>
-                      </h5>
+                      </h2>
                       <!-- HARGA -->
                       <h6>Price :
                         <% if(link.Price.Value){ %>
@@ -67,17 +67,13 @@
                         </a>
                       </h6>
                     </div>
-                    <div class="col-md-6 col-lg-2 col-xl-2 border-sm-start-none border-start">
-                      <div class="d-flex flex-column align-content-end mt-4 my-auto">
-                        <input class="btn btn-primary btn-sm" type="button"
+                    <div class="col-12 col-lg-2 col-xl-2 my-auto">
+                        <input class="btn btn-primary w-100" type="button"
                           onclick="location.href='/admin/edit/<%= link.id %>'" value="Edit" />
 
                         <form action="/api/delete/<%= link.id %>" method="post">
                           <button class="btn btn-danger mt-2 w-100" type="submit">Delete</button>
                         </form>
-                        <!-- <input class="btn btn-danger btn-sm mt-2" type="button"
-                        onclick="location.href='/api/delete/<%= link.id %>'" value="Delete" /> -->
-                      </div>
                     </div>
                   </div>
                 </div>
