@@ -4,16 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="signup_style.css">
 </head>
 <body>
-    <h1>SIGNUP</h1>
-    <form id="signup-form">
-        <input id="username" type="text" placeholder="Username">
-        <input id="email" type="email" placeholder="Email">
-        <input id="password" type="password" placeholder="password">
-        <input class="button" name="submit" type="button" value="submit" onclick="submitUser()" />
-    </form>
+    <div class="container right-panel-active">  
+        <!-- Sign Up -->  
+        <div class="container__form container--signup">  
+             <form class="form" id="form1">  
+                  <h2 class="form__title"><b>Sign Up</b></h2>  
+                  <input type="fullname" placeholder="Fullname" class="input" id="fullname"/>  
+                  <input type="email" placeholder="Email" class="input" id="email"/> 
+                  <input type="username" placeholder="Username" class="input" id="username"/>   
+                  <input type="password" placeholder="Password" class="input" id="password"/>   
+                  <button class="btn" id="btnSubmit" type="button">Submit</button> 
+                  <p class="message">Already have an account ? &nbsp; <a href="#" class="link">log in</a></p>
+             </form>  
+        </div>  
+        <div class="container__overlay">  
+             <div class="formBackground">  
+             </div>  
+        </div>  
+   </div>  
 </body>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
