@@ -4,29 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
     <link rel="stylesheet" href="signup_style.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Sign Up</title>
 </head>
 <body>
     <div class="container right-panel-active">  
         <!-- Sign Up -->  
         <div class="container__form container--signup">  
-             <form class="form" id="form1">  
+             <form class="form" id="formSignUp">  
                   <h2 class="form__title"><b>Sign Up</b></h2>  
-                  <input type="fullname" placeholder="Fullname" class="input" id="fullname"/>  
-                  <input type="email" placeholder="Email" class="input" id="email"/> 
-                  <input type="username" placeholder="Username" class="input" id="username"/>   
-                  <input type="password" placeholder="Password" class="input" id="password"/>   
+                  <input type="email" placeholder="Email" class="input" id="email" required/> 
+                  <input type="username" placeholder="Username" class="input" id="username" required/>   
+                  <input type="password" placeholder="Password" class="input" id="password" required/>   
                   <button class="btn" id="btnSubmit" type="button">Submit</button> 
                   <p class="message">Already have an account ? &nbsp; <a href="#" class="link">log in</a></p>
              </form>  
- 
-             <div class="formBackground">  
-             </div>  
         </div>  
    </div>  
 </body>
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="signup.js"></script>
+<script type="module" src="signup.js"></script>
 </html>

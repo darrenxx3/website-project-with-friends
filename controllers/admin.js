@@ -58,7 +58,7 @@ const uploadData = async (req, res) => {
     }
 
     const UpLink = await Users.findOneAndUpdate({
-        "username" : username
+        "username": username
     },
         {
             $push: {
@@ -76,30 +76,27 @@ const updateData = async (req, res) => {
     const { username } = req.user;
     const { title, url, price, currency } = req.body;
 
-    console.log(req.params);
     const updatedData = {
         "Links.$.Title": title,
         "Links.$.URL": normalizeUrl(url),
         "Links.$.Price": {
-            "Price.$.Currency": currency,
-            "Price.$.Value": price
+            "Currency": currency,
+            "Value": price
         }
     }
 
-    if(req.file) updatedData.assign({'Links.$.Image': '/images/' + req.file.filename});
+    if (req.file) Object.assign(updatedData, { 'Links.$.Image': '/images/' + req.file.filename });
 
+    console.log(updatedData);
     await Users.updateOne({ 'username': username, 'Links._id': ObjectId(id) },
         {
-            '$set':
-            {
-                updatedData
-            }
+            '$set': updatedData
         }
     ).then((err) => {
-        console.log(err);
-    })
+        if (err) console.log(err);
 
-    res.redirect('/admin')
+        res.sendStatus(200);
+    })
 }
 
 const deleteData = async (req, res) => {
@@ -151,22 +148,22 @@ const updateUser = async (req, res) => {
 
             var updtUser = {
                 instagram: instagram,
-                tiktok: tiktok,                
+                tiktok: tiktok,
             };
 
             if (req.file) updtUser.image = '/images/' + req.file.filename;
             if (newPassword) updtUser.password = await bcrypt.hash(newPassword, 10);
 
             Users.updateOne({ 'username': username },
-            {
-                $set: updtUser
-            },
-            (err, doc) => {
-                if(err) { console.log(err); res.sendStatus(404); return; };
+                {
+                    $set: updtUser
+                },
+                (err, doc) => {
+                    if (err) { console.log(err); res.sendStatus(404); return; };
 
-                console.log(doc);
-                res.sendStatus(200);
-            }
+                    console.log(doc);
+                    res.sendStatus(200);
+                }
             )
         }
     });

@@ -1,26 +1,55 @@
-function submitUser() {
-    const inputUsername = document.getElementById("username");
-    const inputEmail = document.getElementById("email");
-    const inputPassword = document.getElementById("password");
+import { isEmail, isFilled } from "../static/js/validation.js"
 
-    console.log(inputUsername.value);
-    axios.post('/api/signup', {
-        username: inputUsername.value,
-        email: inputEmail.value,
-        password: inputPassword.value
-    }, {withCredentials: true})
-        .then((response) => {
-            if(response.data.redirect){
-                window.location = "/admin"
-            }
-        })
-        .catch((error) => {
-            console.log("Error:", error)
-        })
-}
+var inputUsername = document.getElementById("username");
+var inputEmail = document.getElementById("email");
+var inputPassword = document.getElementById("password");
+var btnSubmit = document.getElementById("btnSubmit");
 
-const clearForm = () => {
-    inputUsername.innerText = "";
-    inputEmail.innerText = "";
-    inputPassword.innerText = "";
-}
+btnSubmit.addEventListener("click", async () => {
+
+    let statusFill = await isFilled("formSignUp")
+    let statusEmail = await isEmail(inputEmail.value);
+
+    if (statusFill && statusEmail) {
+        await fetch('/api/signup', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/JSON'
+            },
+            body: JSON.stringify({
+                username: inputUsername.value,
+                email: inputEmail.value,
+                password: inputPassword.value
+            })
+        })
+            .then(res => {
+                if (res.status == 409) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Username or Email Already Exist!',
+                        text: 'Please change your username or email!',
+                    })
+                }
+                else if(res.status == 400){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Sign Up Failure!',
+                        text: 'Fail to register user, please kindly try again!',
+                    })
+                }
+                else if(res.status == 200){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'User Successfully Registered!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    setInterval(
+                        () => { location.href = "/admin" }
+                        , 2000
+                    );
+                }
+            })
+    }
+})

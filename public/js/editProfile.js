@@ -1,38 +1,19 @@
-import { sendData } from "../crud.js";
-import { isImage, checkPass } from "../validation.js";
+import { checkImage } from "./validation.js";
 
-const btn = document.getElementById("btnProfile");
+const btnSubmit = document.getElementById("btnProfile");
 var picture = document.getElementById("wizard-picture");
 var insta = document.getElementById("instagram");
 var tiktok = document.getElementById("tiktok");
 var newPass = document.getElementById("curPass");
 var confirmPass = document.getElementById("newPass");
 
-var tempPic;
+var tempFile
 picture.addEventListener("change", (e) => {
-    console.log(tempPic);
-
-    if (!isImage(picture)) {
-        picture.value = "";
-        swal("Please input only image");
-        return;
-    };
-
-    tempPic = picture.files[0];
-
-    var reader = new FileReader();
-    var picPreview = document.getElementById("wizardPicturePreview");
-
-    reader.onload = (e) => {
-        picPreview.src = e.target.result;
-    };
-
-    reader.readAsDataURL(picture.files[0]);
-
-
+    tempFile = checkImage(picture, tempFile);
+    console.log(tempFile);
 })
 
-btn.addEventListener("click", async (e) => {
+btnSubmit.addEventListener("click", async (e) => {
     e.preventDefault();
 
     if (newPass.value != confirmPass.value) {
@@ -53,10 +34,10 @@ btn.addEventListener("click", async (e) => {
         inputPlaceholder: 'Enter your password',
         showCancelButton: false,
         inputAttributes: {
-          autocapitalize: 'off',
-          autocorrect: 'off'
+            autocapitalize: 'off',
+            autocorrect: 'off'
         }
-      })
+    })
 
     var formData = new FormData();
     formData.append("image", picture.files[0]);
@@ -71,8 +52,7 @@ btn.addEventListener("click", async (e) => {
         body: formData
     })
         .then(res => {
-            console.log(res.status);
-            if(res.status == 402){
+            if (res.status == 402) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Wrong Password',
@@ -88,10 +68,51 @@ btn.addEventListener("click", async (e) => {
                     showConfirmButton: false,
                     timer: 1500
                 })
-                location.reload();
+                setInterval(
+                    () => { location.reload() }
+                    , 3000
+                );
             }
         })
         .catch(err => {
             console.log(err);
         })
+})
+
+var btnDel = document.getElementById("btnDel");
+
+btnDel.addEventListener("click", async () => {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then(async (result) => {
+        if (result.isConfirmed) {
+
+            await fetch("/api/deleteUser", { method: 'POST' })
+                .then(res => {
+                    if (res.status == 200) {
+                        Swal.fire(
+                            'Deleted!',
+                            'Your Account has been deleted.',
+                            'success'
+                        )
+                        setTimeout(() => { location.href = "/login" }), 2000
+                    } else {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'error',
+                            title: 'Error Occured! Please try again later',
+                            showConfirmButton: false,
+                            timer: 2000
+                        })
+                    }
+                })
+
+        }
+    })
 })

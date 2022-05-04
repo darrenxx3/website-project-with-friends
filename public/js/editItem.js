@@ -1,4 +1,4 @@
-import { checkImage, isFilled, isLink, isNumber   } from "../../static/js/validation.js"
+import { checkImage, isLink, isNumber } from "../../static/js/validation.js"
 
 
 var image = document.getElementById("wizard-picture");
@@ -24,9 +24,8 @@ btnSubmit.addEventListener("click", async () => {
     var ParamsID = window.location.pathname.split("/").pop();
 
 
-    let statusFill = await isFilled("formAdd");
-    let statusPrice = await isNumber(price.value);
     let statusLink = await isLink(URL);
+    let statusPrice = await isNumber(price.value);
 
     var formData = new FormData();
     formData.append("image", tempFile);
@@ -36,8 +35,8 @@ btnSubmit.addEventListener("click", async () => {
     formData.append("price", price.value);
 
 
-    if (statusLink && statusPrice && statusFill) {
-        fetch(`/api/upload`, {
+    if (statusLink && statusPrice) {
+        fetch(`/api/update/${ParamsID}`, {
             method: "POST",
             body: formData,
         })
@@ -60,7 +59,7 @@ btnSubmit.addEventListener("click", async () => {
             .catch(ex => {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Upload data failure!',
+                    title: 'Update data failed!',
                     text: 'Error while updating data, please kindly retry.',
                 })
                 console.log(ex)

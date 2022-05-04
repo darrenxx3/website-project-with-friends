@@ -4,23 +4,54 @@ export function isFilled(formID) {
     document.getElementById(formID)
         .querySelectorAll("[required]")
         .forEach(input => {
-            console.log(input.value == "");
-            if (input.value == "") status = false;
+            if (!input.value) {
+                status = false;
+            }
         })
+
+    if (!status) {
+        console.log("MASUK");
+        Swal.fire({
+            icon: 'error',
+            title: 'Input not complete!',
+            text: 'Please fill all the empty box!',
+        })
+    };
 
     return status;
 }
 
-export function isLink(url) {
+export function isLink(urlDOM) {
+    let url = urlDOM.value
     let testURL
 
-    try {
-        testURL = new URL(url);
-    } catch (_) {
-        return false;
+    if (url) {
+        try {
+            testURL = new URL(url);
+        } catch (_) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid URL!',
+                text: 'Please input only valid URL!',
+            })
+            return false;
+        }
+        return true;
     }
 
-    return true;
+}
+
+export function isNumber(price) {
+    if (isNaN(price)) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid Price!',
+            text: 'Please input only valid Price!',
+        })
+        return false;
+    } else {
+        return true;
+    }
 }
 
 export function isImage(file) {
@@ -36,15 +67,40 @@ export function isImage(file) {
     return false;
 }
 
-export function isImageOptional(file) {
-    if (!file.files[0]) return true;
+export function checkImage(inputFile, tempFile) {
 
-    isImage(file);
+    if (!isImage(inputFile)) {
+        inputFile.value = "";
+        Swal.fire({
+            icon: 'error',
+            title: 'Wrong Format!',
+            text: 'Please input only image!',
+        })
+        return tempFile;
+    };
+
+    var reader = new FileReader();
+    var picPreview = document.getElementById("wizardPicturePreview");
+
+    reader.onload = (e) => {
+        picPreview.src = e.target.result;
+    };
+
+    reader.readAsDataURL(inputFile.files[0]);
+    return inputFile.files[0];
 }
 
+export function isEmail(email){
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-export async function checkPass(curPass) {
-    if (!curPass) return true;
-
-    return true;
+    if (email.match(regexEmail)) {
+        return true;
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Invalid Email!',
+            text: 'Please input only valid email address!',
+        })
+        return false;
+    };
 }

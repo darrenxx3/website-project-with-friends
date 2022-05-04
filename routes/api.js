@@ -1,4 +1,4 @@
-const { insertUser, findUsers, authLogin } = require('../controllers/user');
+const { insertUser, findUsers, authLogin, deleteUser } = require('../controllers/user');
 const { uploadData, updateData, deleteData, updateUser }  = require("../controllers/admin");
 const express = require("express");
 const router = express.Router({mergeParams: true});
@@ -48,6 +48,9 @@ router.route('/logout')
         req.logOut();
         res.redirect('/login');
     })
+
+router.route('/deleteUser')
+    .post(deleteUser)
 
 
 module.exports = router;

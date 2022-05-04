@@ -302,6 +302,11 @@ footer .content .top {
 }
 
 .picture-src {
+    aspect-ratio: 1;
+    object-fit: cover;
+    /* Do not scale the image */
+    object-position: center center;
+    /* Center the image within the element */
     width: 100%;
 
 }

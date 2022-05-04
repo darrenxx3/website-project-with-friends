@@ -1,25 +1,36 @@
-function submitUser() {
-    const inputEmail = document.getElementById("email");
-    const inputPassword = document.getElementById("password");
+import { isEmail, isFilled } from "../static/js/validation.js"
 
-    axios.post('/api/login',
-        {
-            email: inputEmail.value,
-            password: inputPassword.value,
-        },
-        { withCredentials: true })
-        .then((response) => {
-            if (response.data.redirect) {
-                window.location = "/admin";
-            }
-            return;
+var inputEmail = document.getElementById("email");
+var inputPassword = document.getElementById("password");
+var btnSubmit = document.getElementById("btnSubmit");
+
+btnSubmit.addEventListener("click", async () => {
+
+    let statusFill = await isFilled("formLogin")
+    let statusEmail = await isEmail(inputEmail.value);
+
+    if (statusFill && statusEmail) {
+        await fetch('/api/login', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/JSON'
+            },
+            body: JSON.stringify({
+                email: inputEmail.value,
+                password: inputPassword.value
+            })
         })
-        .catch((error) => {
-            swal("Wrong Password");
-            return;
-        }
-    )
-}
-
-const btnSubmit = document.getElementById("btnSubmit");
-btnSubmit.addEventListener("click", submitUser);
+            .then(res => {
+                if(res.status == 400){
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login Fail!',
+                        text: "Invalid email or password, please try again!",
+                    })
+                }
+                else if(res.status == 200){
+                   location.href = "/admin";
+                }
+            })
+    }
+})
