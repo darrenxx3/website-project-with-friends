@@ -1,0 +1,215 @@
+
+.container{
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    
+    
+  }
+  
+  input[type=text], select, textarea {
+      width: 50%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+    
+    input[type=submit] {
+      background-color: #04AA6D;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+  .h1-responsive{
+    font-size: 50pt;
+    background-color: #DDDDDD;
+    border-radius: 0px 0px 20px 20px;
+    
+  }
+.font-weight-bold{
+  padding: 70px;
+}
+  
+  
+  .mb-4{
+    background-color:#F7F7F7;
+    background-size: 100%;
+  }
+
+  #contact-form{
+    border-radius: 20px;
+    padding: 50px;
+    margin-bottom: 10px;
+
+  }
+  .col-md-3{
+    border-radius: 20px;
+    padding-top: 30px;
+    margin-bottom: 10px;
+  }
+
+
+  /*ini merupakan container dan footer*/
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+  }
+
+  footer {
+      margin-top: 400px;
+      background: rgba(0, 0, 0, 0.2);
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      position: relative;
+  }
+
+  footer .content {
+      max-width: 1250px;
+      margin: auto;
+      padding: 40px 0px 40px 40px;
+  }
+
+  footer .content .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+
+  .content .top .logo-details {
+      color: #000;
+      font-size: 30px;
+  }
+
+  .content .top .logo-details:hover {
+      color: #fff;
+      cursor: pointer;
+  }
+
+  #design {
+      width: auto;
+      /*ukuran dari layout web yang akan digunakan*/
+      margin: 0px auto 0;
+      overflow: hidden;
+      background-color: #F7F7F7;
+
+  }
+
+  .btn-primary:active,
+  .btn-primary:visited {
+      background-color: black !important;
+  }
+
+  .content .top .media-icons {
+      display: flex;
+      padding-left: 10%;
+      margin-left: 10%;
+  }
+
+  .content .top .media-icons a {
+      margin: 0 8px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      color: #fff;
+      font-size: 17px;
+      text-decoration: none;
+      transition: all 0.4s ease;
+  }
+
+  .content .top .media-icons {
+      display: flex;
+  }
+
+  .content .top .media-icons a {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      color: #fff;
+      font-size: 17px;
+      text-decoration: none;
+      transition: all 0.4s ease;
+  }
+
+  .top .media-icons a:nth-child(1) {
+    background: #FF0000;
+}
+
+.top .media-icons a:nth-child(1):hover {
+    color: #FF0000;
+    background: #fff;
+}
+
+  .top .media-icons a:nth-child(2) {
+      background: #1DA1F2;
+  }
+
+  .top .media-icons a:nth-child(2):hover {
+      color: #1DA1F2;
+      background: #fff;
+  }
+
+  .top .media-icons a:nth-child(3) {
+      background: #E1306C;
+  }
+
+  .top .media-icons a:nth-child(3):hover {
+      color: #E1306C;
+      background: #fff;
+  }
+
+  .top .media-icons a:nth-child(4) {
+      background: #0077B5;
+  }
+
+  .top .media-icons a:nth-child(4):hover {
+      color: #0077B5;
+      background: #fff;
+  }
+
+  #awp{
+    font-size: 18px;
+    text-align: left;
+    padding-left: 10px;
+    padding-bottom: 0px;
+    font-weight: bold;
+  
+  }
+
+  #chatus{
+    text-align: left;
+    padding-left: 10px;
+    font-size: 15px;
+  }
+
+  .fa fa-instagram mt-3{
+    background-color: #0077B5;
+  }
+
+ #our{
+  font-size: 25px;
+  text-align: left;
+  padding-left: 10px;
+  font-weight: bold;
+ }
+
+  #bawah{
+    margin-top: 70px;
+  }
