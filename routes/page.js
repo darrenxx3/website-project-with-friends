@@ -15,4 +15,7 @@ router.route('/admin/edit/:id')
 router.route('/admin/profile')
     .get(loadProfile)
 
+router.route('/forgot/confirm')
+    .get((req,res) => {res.render("pertanyaan")})
+
 module.exports = router;
