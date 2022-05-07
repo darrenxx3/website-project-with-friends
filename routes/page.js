@@ -1,5 +1,5 @@
 const { loadAdmin, loadEdit, loadProfile} = require('../controllers/admin');
-const { getLink } = require('../controllers/user');
+const { getLink, loadConfirm } = require('../controllers/user');
 const express = require("express");
 const router = express.Router({mergeParams: true});
 
@@ -15,7 +15,7 @@ router.route('/admin/edit/:id')
 router.route('/admin/profile')
     .get(loadProfile)
 
-router.route('/forgot/confirm')
-    .get((req,res) => {res.render("pertanyaan")})
+router.route('/forgot/:encryptEmail')
+    .get(loadConfirm)
 
 module.exports = router;

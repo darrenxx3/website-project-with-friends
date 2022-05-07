@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/signup_style.css">
+    <link rel="stylesheet" href="../../static/css/forgotConfirm.css">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Forgot Question</title>
 </head>
@@ -12,16 +12,16 @@
     <div class="container right-panel-active">  
         <!-- Pertanyaan -->  
         <div class="container__form container--signup">  
-             <form class="form" id="formSignUp">  
-                  <h2 class="form__title"><b>apapapapa</b></h2>  
+             <form class="form" id="formConfirm">  
+                  <h2 class="form__title"><b><%= question %></b></h2>  
                   <input type="username" placeholder="Answer" class="input" id="answer" required/>
                   <input type="password" placeholder="Insert new password" class="input" id="password" required/>
-                  <input type="password" placeholder="Confirm new password" class="input" id="password" required/>   
+                  <input type="password" placeholder="Confirm new password" class="input" id="confirmPassword" required/>   
                   <button class="btn" id="btnSubmit" type="button">Submit</button>
              </form>  
         </div>  
    </div>  
-</body>
 
-<script type="module" src="signup.js"></script>
+   <script type="module" src="../static/js/forgotConfirm.js"></script>
+</body>
 </html>

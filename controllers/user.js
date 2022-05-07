@@ -5,9 +5,13 @@ const normalizeEmail = require('normalize-email');
 const slug = require('slug');
 const Users = require("../models/Users");
 
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr('myTotallySecretKey');
+
 const insertUser = async (req, res) => {
-    const {username, email, password } = req.body;
+    const {username, email, password, question, answer } = req.body;
     const hashedPass = await bcrypt.hash(password, 10);
+    const hashedAns = await bcrypt.hash(answer, 10);
     const normalEmail = normalizeEmail(email);
     const slugUsername = slug(username);
 
@@ -20,11 +24,15 @@ const insertUser = async (req, res) => {
                 const user = new Users({
                     username: slugUsername,
                     email: normalEmail,
-                    password: hashedPass
+                    password: hashedPass,
+                    securityQuestion: {
+                        question: question,
+                        answer: hashedAns
+                    }
                 })
             
                 user.save((err, user) => {
-                    if(err) res.sendStatus(400);
+                    if(err) console.log(err);
             
                     req.login(user, (logErr) => {
                         if(logErr) return console.log(logErr);
@@ -74,6 +82,61 @@ const getLink = (req, res) => {
     })
 }
 
+const checkEmail = (req, res) => {
+    const { email } = req.body
+
+    Users.findOne({ "email": email }, 
+    (err, docs) => {
+        if(err){
+            res.sendStatus(404);
+            return;
+        }
+        const encryptEmail = cryptr.encrypt(docs.email);
+        res.status(200).json({email: encryptEmail});
+    })
+}
+
+const loadConfirm = async (req, res) => {
+    const {encryptEmail} = req.params;
+    const decryptEmail =  cryptr.decrypt(encryptEmail); 
+
+    Users.findOne({ "email" : decryptEmail }, 
+    (err, docs) => {
+        if(err){
+            res.render('404');
+        }
+
+        const {question} = docs.securityQuestion
+        console.log(question);
+        res.render("forgotConfirm", {question: question})
+    })
+}
+
+const updatePass = async(req, res) => {
+    const{encryptEmail} = req.params;
+    const decryptEmail =  cryptr.decrypt(encryptEmail); 
+
+    const { answer, password } = req.body;
+    const hashedPass = await bcrypt.hash(password, 10);
+
+    Users.updateOne({
+        "email" : decryptEmail,
+        "securitQuestion.answer" : answer
+    },
+    {
+        "password" : hashedPass
+    },
+    (err, docs) => {
+        if(err) {
+            console.log(err);
+            res.sendStatus(403); 
+            return;
+        }
+
+        res.sendStatus(200);
+    })
+}
+
 const deleteUser = async (req, res) => {
     const {username} = req.user;    
 
@@ -91,5 +154,8 @@ module.exports = {
     findUsers,
     authLogin,
     getLink,
-    deleteUser
+    deleteUser,
+    checkEmail,
+    loadConfirm,
+    updatePass,
 }

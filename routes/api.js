@@ -1,4 +1,4 @@
-const { insertUser, findUsers, authLogin, deleteUser } = require('../controllers/user');
+const { insertUser, findUsers, authLogin, deleteUser, checkEmail, updatePass } = require('../controllers/user');
 const { uploadData, updateData, deleteData, updateUser }  = require("../controllers/admin");
 const express = require("express");
 const router = express.Router({mergeParams: true});
@@ -29,6 +29,12 @@ router.route('/login')
 
 router.route('/signup')
     .post(insertUser);
+
+router.route('/forgotPass')
+    .post(checkEmail);
+
+router.route('/changePass/:encryptEmail')
+    .post(updatePass)
 
 router.route('/upload')
     .post(upload.single("image"), uploadData);
