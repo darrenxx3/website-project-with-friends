@@ -1,13 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="style.css"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pohon Link | Contact Us</title>
+    <!--<link rel="stylesheet" href="style.css"/>-->
+    <link rel="stylesheet" href="formstyle.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
 
+        /*ini merupakan container dan footer*/
+
+        body{
+            margin:0;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+
+        .background{
+            background-color: #FFFFFF;
+        }
+        #desain {
+            width: auto;
+            /*ukuran dari layout web yang akan digunakan*/
+            margin: 0px auto 0;
+            overflow: hidden;
+        }
+        .carousel-item {
+            height: 20rem;
+            background: #777;
+            color: white;
+            position: relative;
+            
+
+        }
+
+        .carousel-caption {
+            bottom: 60px;
+
+        }
+
+        .carousel-caption h5 {
+            font-size: 70px;
+            font-weight: 700;
+        }
+
+        footer {
+            margin-top: 1px;
+            background: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            position: relative;
+        }
+
+        footer .content {
+            max-width: 1250px;
+            margin: auto;
+            padding: 40px 0px 40px 40px;
+        }
+
+        footer .content .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .content .top .logo-details {
+            color: #000;
+            font-size: 30px;
+        }
+
+        .content .top .logo-details:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .content .top .media-icons {
+            display: flex;
+            padding-left: 10%;
+            margin-left: 10%;
+        }
+
+        .content .top .media-icons a {
+            margin: 0 8px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-size: 17px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .content .top .media-icons {
+            display: flex;
+        }
+
+        .content .top .media-icons a {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-size: 17px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .top .media-icons a:nth-child(1) {
+            background: #4267B2;
+        }
+
+        .top .media-icons a:nth-child(1):hover {
+            color: #4267B2;
+            background: #fff;
+        }
+
+        .top .media-icons a:nth-child(2) {
+            background: #1DA1F2;
+        }
+
+        .top .media-icons a:nth-child(2):hover {
+            color: #1DA1F2;
+            background: #fff;
+        }
+
+        .top .media-icons a:nth-child(3) {
+            background: #E1306C;
+        }
+
+        .top .media-icons a:nth-child(3):hover {
+            color: #E1306C;
+            background: #fff;
+        }
+
+        .top .media-icons a:nth-child(4) {
+            background: #0077B5;
+        }
+
+        .top .media-icons a:nth-child(4):hover {
+            color: #0077B5;
+            background: #fff;
+        }
+
+        .top .media-icons a:nth-child(5) {
+            background: #FF0000;
+        }
+
+        .top .media-icons a:nth-child(5):hover {
+            color: #FF0000;
+            background: #fff;
+        }
+        /*container side bar*/
+        i{
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+</style>
 </head>
 <body>
 
@@ -27,7 +184,7 @@
                             <a class="nav-link active" aria-current="page" href="#">Home</a>
                         </li>
                         <li class="nav-item mx-4">
-                            <a class="nav-link active" aria-current="page" href="#">About</a>
+                            <a class="nav-link active" aria-current="page" href="../aboutUS/index.html">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
@@ -36,7 +193,7 @@
                     <form class="d-flex">
                         <ul class="navbar-nav mb-2 mb-lg-0">
                             <li class="nav-item mx-4">
-                                <a href="#" class="nav-link active">Login</a>
+                                <a href="../login/index.html" class="nav-link active">Login</a>
                             </li>
                         </ul>
                         <button class="btn form-control bg-dark text-white me-3" style="width: 150px;"
@@ -46,108 +203,89 @@
             </div>
         </nav>
 
-
-         
-       <!--Section: Contact v.2-->
-<section class="mb-4" style="margin-top: 50px;">
-    <div class="container-fluid">
-    <!--Section heading-->
-    <h2 class="h1-responsive font-weight-bold text-center my-4 ">Contact Us</h2>
-    <!--Section description-->
-    <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
-        a matter of hours to help you.</p>
-    
-    <div class="row">
-
-        <!--Grid column-->
-        <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST" style="background-image: linear-gradient(rgb(138, 138, 230) , rgb(179, 188, 231));">
-
-                <!--Grid row-->
-                <div class="row">
-                    <label for="name" class="">Your Name *</label>
-                    <!--Grid column-->
-                    <div class="col-md-12">
-                        <div class="md-form mb-0">
-                            <input type="text" id="name" name="name" class="form-control">
-                            <label for="email" class="">Your Email *</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-    
-
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="md-form mb-0">
-                            <input type="text" id="subject" name="subject" class="form-control">
-                            <label for="subject" class="">Message *</label>
-                        </div>
-                    </div>
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-12">
-
-                        <div class="md-form">
-                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                            
-                        </div>
-                        <a class="btn btn-primary" style="margin-top: 22px;" onclick="document.getElementById('contact-form').submit();">Send</a>
-                    </div>
-                </div>
-                <!--Grid row-->
-
-            </form>
-
-            
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-3 text-center" style="background-image: linear-gradient(rgb(138, 138, 230) , rgb(179, 188, 231));">
-            <ul class="list-unstyled mb-0">
-                <li>
-                    <p id="our">Our Social Media</p>
-                </li>
-
-                <li>
-                    <i class="fa fa-instagram mt-1 fa-2x" ></i><p>Instagram</p>
-                </li>
-
-                <li>
-                    <i class="fa fa-twitter mt-1 fa-2x" ></i><p>Twitter</p>
-                </li>
-
-                <li>
-                    <i class="fa fa-facebook mt-1 fa-2x" ></i><p>Facebook</p>
-                </li>
-
-                
-                    <p id="awp">Already with pohonlink.id?</p>
-                    <p id="chatus">Chat us and give your feedback to our social media and get an instant reply.</p>
-                
-            </ul>
-        </div>
-        <!--Grid column-->
+        <!--carousel 1 slide-->
+        <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="images/.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                <h5>Contact Us</h5>
+            </div>
+          </div>
     </div>
+
+<div class="background">
+    <div class="content">
+        <div class="container">
+          <div class="row align-items-stretch no-gutters contact-wrap">
+            <div class="col-md-8">
+              <div class="form h-100">
+                <h1>How Can We Help?</h1>
+                <form class="mb-4" method="post" id="contactForm" name="contactForm">
+                  <div class="row">
+                    <div class="col-md-12 form-group mb-5">
+                      <label for="" class="col-form-label">Name *</label>
+                      <input type="text" class="form-control" name="name" id="name" placeholder="">
+                    </div>
+                    <div class="col-md-12 form-group mb-5">
+                      <label for="" class="col-form-label">Email *</label>
+                      <input type="text" class="form-control" name="email" id="email"  placeholder="">
+                    </div>
+                  </div>
+    
+                  <div class="row">
+                    <div class="col-md-12 form-group mb-5">
+                      <label for="message" class="col-form-label">Message *</label>
+                      <textarea class="form-control" name="message" id="message" cols="30" rows="4"  placeholder=""></textarea>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12 form-group">
+                      <input type="submit" value="Submit" class="btn btn-dark w-100">
+                      <!--<a class="btn btn-primary w-100" role="button" id="btnSubmit">-->
+                    </div>
+                  </div>
+                </form>
+    
+                <div id="form-message-warning mt-4"></div> 
+                <div id="form-message-success">
+                  Your message was sent, thank you!
+                </div>
+    
+                <!--codingan Sidebar-->
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="contact-info h-100">
+                <h3>Our Social Media</h3>
+                <ul class="list-unstyled">
+                  <li class="d-flex">
+                    <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                    <span class="text">Twitter</span>
+                  </li>
+                  <li class="d-flex">
+                    <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                    <span class="text">Instagram</span>
+                  </li>
+                  <li class="d-flex">
+                    <!--<span class="wrap-icon fa fa-facebook mr-3"></span>-->
+                    <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                    <span class="text">Facebook</span>
+                  </li>
+                </ul>
+                <h3>Already with pohonlink.id?</h3>
+                <p class="mb-5">Chat us and give your feedback to our social media and get an instant reply.</p>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
-</section>
+</div>
 
         <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
-            
-    <footer id="bawah">
-        
+    <footer>
         <div class="content p-3">
             
             <div class="top">
@@ -168,6 +306,5 @@
         </div>
     </footer>
 </div>
-
 </body>
 </html>
