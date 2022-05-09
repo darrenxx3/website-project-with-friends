@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="../static/css/admin.css">
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Admin</title>
 </head>
 
@@ -23,15 +24,13 @@
           </a>
         </div>
         <div class="col-md-10 mt-1">
-          <div class="input-group">
-            <input class="form-control" type="text">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button">Search</button>
-            </div>
-          </div>
+          <form action="/admin" class="input-group" method="GET">
+            <input class="form-control" type="text" name="title" autocomplete>
+            <button class="btn btn-outline-secondary" type="submit" id="btnSearch">Search</button>
+          </form>
         </div>
       </div>
-      <% links.forEach((link)=> {%>
+      <% if(userLink.length){ userLink.forEach((user)=> {%>
         <section class="py-3">
           <!-- #MENU -->
           <div class="row justify-content-evenly mb-3">
@@ -41,20 +40,20 @@
                   <div class="row">
                     <div class="col-4 col-md-4 col-lg-2 col-xl-2 mb-4 mb-lg-0">
                       <div class="thumbnail">
-                        <img src="<%= link.Image %>" class="thumb-post img img-responsive full-width rounded" />
+                        <img src="<%= user.Links.Image %>" class="thumb-post img img-responsive full-width rounded" />
                       </div>
                     </div>
                     <div class="col-8 col-md-8 col-lg-8 col-xl-8 my-auto">
                       <!-- Judul -->
                       <h2>
-                        <%= link.Title %>
+                        <%= user.Links.Title %>
                       </h2>
                       <!-- HARGA -->
                       <h6>Price :
-                        <% if(link.Price.Value){ %>
+                        <% if(user.Links.Price.Value){ %>
                           <b>
-                            <%= link.Price.Currency%>
-                              <%= link.Price.Value %>
+                            <%= user.Links.Price.Currency%>
+                              <%= user.Links.Price.Value %>
                           </b>
                           <% } else {%>
                             <b>-</b>
@@ -62,32 +61,36 @@
                       </h6>
                       <!-- URL -->
                       <h6>URL:
-                        <a target="_blank" rel="noopener noreferrer" href="<%= link.URL %>>">
-                          <%= link.URL %>
+                        <a target="_blank" rel="noopener noreferrer" href="<%= user.Links.URL %>>">
+                          <%= user.Links.URL %>
                         </a>
                       </h6>
                     </div>
                     <div class="col-12 col-lg-2 col-xl-2 my-auto">
-                        <input class="btn btn-primary w-100" type="button"
-                          onclick="location.href='/admin/edit/<%= link.id %>'" value="Edit" />
-
-                        <form action="/api/delete/<%= link.id %>" method="post">
-                          <button class="btn btn-danger mt-2 w-100" type="submit">Delete</button>
-                        </form>
+                      <input class="btn btn-primary w-100" type="button"
+                        onclick="location.href='/admin/edit/<%= user.Links.id %>'" value="Edit" />
+                      <button class="btn btn-danger mt-2 w-100" type="submit" onclick="delData('<%= user.Links.id %>')">
+                        Delete
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <% }) %>
-
+          <% }) } else { %>
+            <div class="text-center p-5">
+              <h2 class="fw-bold">Data Not Found</h2>
+              <p>Please kindly add a new data.</p>
+            </div>
+            <% } %>
         </section>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+  <script src="../static/js/admin.js"></script>
 </body>
 
 </html>

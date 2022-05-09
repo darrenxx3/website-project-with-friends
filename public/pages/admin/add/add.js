@@ -21,9 +21,7 @@ URL.addEventListener("change", () => {
 })
 
 btnSubmit.addEventListener("click", async () => {
-    var ParamsID = window.location.pathname.split("/").pop();
-
-
+    
     let statusFill = await isFilled("formAdd");
     let statusPrice = await isNumber(price.value);
     let statusLink = await isLink(URL);
@@ -67,3 +65,5 @@ btnSubmit.addEventListener("click", async () => {
             })
     }
 })
+
+
