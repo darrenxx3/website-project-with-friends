@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/linkUserRev.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="text-center">
+        <img src="<%= user.image%>" class="rounded-circle my-4" id="profilePict">
+        <h4><b>
+                <%= user.username %>
+            </b></h4>
+    </div>
+    <div class="container">
+        <!-- Product Card -->
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-2">
+            <% user.Links.forEach(link=> { %>
+                <a href="<%= link.URL %>" target="_blank" class="text-decoration-none">
+                    <div class="shadow col mt-2">
+                        <div class="card h-100">
+                            <div class="card-img-top p-2 ">
+                                <img class="itemImage w-100 border-radius" src="<%= link.Image %>">
+                            </div>
+                            <div class="card-body text-center">
+                                <h5 class="card-title">
+                                    <%= link.Title %>
+                                </h5>
+                                <p class="card-text">
+                                    <b>
+                                        <%= link.Price.Currency %>
+                                    </b>
+                                    <%= link.Price.Value %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <% }) %>
+        </div>
+    </div>
+    </div>
+    <footer>
+        <div class="content mt-5">
+            <div class="d-flex justify-content-center">
+                <% if(user.instagram) { %>
+                    <div class="logo me-3 mb-3">
+                        <a target="_blank" href="https://www.instagram.com/<%= user.instagram %>">
+                            <img src="../static/images/instagram.png" class="center" alt="">
+                        </a>
+                    </div>
+                    <% } %>
+                 <% if(user.tiktok){ %>
+                    <div class="logo  me-3 mb-3">
+                        <a target="_blank" href="https://www.tiktok.com/@<%= user.tiktok %>"">
+                            <img src=" ../static/images/tiktok.png" class="center" alt="">
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

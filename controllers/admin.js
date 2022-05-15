@@ -12,30 +12,37 @@ const loadAdmin = async (req, res) => {
     }
 
     if (req.query.title) {
-        searchOption["Links.Title"] = {"$regex": req.query.title, "$options": "i"}; 
+        searchOption["Links.Title"] = { "$regex": req.query.title, "$options": "i" };
     }
 
     console.log(searchOption);
 
     Users.aggregate([
-        { "$unwind" : '$Links'},    
-        { "$match" : {
-            "$and" : [
-                searchOption
-            ]
-        }},
-        { "$project": {
-            Links : 1
-        }
-    }]).exec((err, docs) => {
-        if(err) {
-            console.log(err);
-            return;
-        }
-        
-        console.log(docs);
-        res.render('admin', {userLink: docs})
-    })
+        { "$unwind": '$Links' },
+        {
+            "$match": {
+                "$and": [
+                    searchOption
+                ]
+            }
+        },
+        {
+            "$project": {
+                Links: 1
+            }
+        }]).exec((err, docs) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
+            //console.log(docs);
+            let arrID = docs.map((arr, index) => {
+                return arr.Links._id.valueOf();
+            })
+
+            res.render('admin', {userLink: docs, id: arrID})
+        })
 }
 
 const loadEdit = async (req, res) => {

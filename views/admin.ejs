@@ -30,7 +30,7 @@
           </form>
         </div>
       </div>
-      <% if(userLink.length){ userLink.forEach((user)=> {%>
+      <% if(userLink.length){ userLink.forEach((user, index)=> {%>
         <section class="py-3">
           <!-- #MENU -->
           <div class="row justify-content-evenly mb-3">
@@ -68,8 +68,8 @@
                     </div>
                     <div class="col-12 col-lg-2 col-xl-2 my-auto">
                       <input class="btn btn-primary w-100" type="button"
-                        onclick="location.href='/admin/edit/<%= user.Links.id %>'" value="Edit" />
-                      <button class="btn btn-danger mt-2 w-100" type="submit" onclick="delData('<%= user.Links.id %>')">
+                        onclick="location.href='/admin/edit/<%= id[index] %>'" value="Edit" />
+                      <button class="btn btn-danger mt-2 w-100" type="submit" onclick="delData('<%= id[index] %>')">
                         Delete
                       </button>
                     </div>

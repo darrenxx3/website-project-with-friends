@@ -78,7 +78,7 @@ const getLink = (req, res) => {
             return;
         }
         
-        res.render('linkUser', {user: docs})
+        res.render('linkUserRev', {user: docs})
     })
 }
 

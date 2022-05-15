@@ -1,0 +1,130 @@
+<header>
+    <style>
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            position: relative;
+            font-weight: 600;
+            color: #000;
+            text-decoration: none;
+            font-size: 2em;
+        }
+
+        header .navigation {
+            position: relative;
+            display: flex;
+        }
+
+        header .navigation li {
+            list-style: none;
+        }
+
+        header .navigation li a {
+            display: inline-block;
+            color: #000;
+            font-weight: 400;
+            margin-left: 10px;
+            padding: 8px 15px;
+            border-radius: 40px;
+            text-decoration: none;
+        }
+
+        header .navigation li a:hover {
+            background: #fff;
+            color: #333;
+        }
+
+        header .navigation li .button {
+            border-radius: 5px;
+            border: none;
+            background-color: #C9DD94;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            font-size: 15px;
+            margin-left: 20px;
+        }
+
+        header .navigation li .button:hover {
+            background: #fff;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 991px) {
+            header {
+                padding: 20px;
+            }
+
+            .content {
+                flex-direction: column;
+            }
+
+            header .navigation {
+                display: none;
+            }
+
+            header .navigation.active {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
+                z-index: 10;
+            }
+
+            header .navigation li a {
+                font-size: 1.2em;
+                margin: 5px 0;
+            }
+
+            header .navigation li .button {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .toggle {
+                position: relative;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                background: url(images/menu.png);
+                background-size: 30px;
+                background-position: center;
+                background-repeat: no-repeat;
+                z-index: 10000;
+            }
+
+            .toggle.active {
+                position: fixed;
+                right: 20px;
+                background: url(images/close.png);
+                background-size: 25px;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+    </style>
+    <a href="" class="logo">PohonLink</a>
+    <div class="toggle"></div>
+    <ul class="navigation">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Login</a></li>
+        <li><button class="button" type="button"><a href="#" class="mx-1">Sign Up</a></button></li>
+    </ul>
+</header>
