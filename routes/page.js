@@ -16,7 +16,7 @@ router.route('/admin/edit/:id')
 router.route('/admin/profile')
     .get(loadProfile)
 
-router.route('/forgot/:encryptEmail')
+router.route('/change/:encryptEmail')
     .get(loadConfirm)
 
 module.exports = router;
