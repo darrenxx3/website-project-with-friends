@@ -26,7 +26,7 @@ btnSubmit.addEventListener("click", async () => {
 
                 if(res.status==200){
                     const data = await res.json();
-                    location.href = `/forgot/${data.email}`
+                    location.href = `/change/${data.email}`
                 }
             })
             .catch(err => {

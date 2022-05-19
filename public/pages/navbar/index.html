@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        section {
+            position: relative;
+            width: 100%;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #9DCF94;
+            background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            position: relative;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            font-size: 2em;
+        }
+
+        header .navigation {
+            position: relative;
+            display: flex;
+        }
+
+        header .navigation li {
+            list-style: none;
+        }
+
+        header .navigation li a {
+            display: inline-block;
+            color: #fff;
+            font-weight: 400;
+            margin-left: 10px;
+            padding: 8px 15px;
+            border-radius: 40px;
+            text-decoration: none;
+        }
+
+        header .navigation li a:hover {
+            background: #fff;
+            color: #333;
+        }
+
+        header .navigation li .button {
+            border-radius: 5px;
+            border: none;
+            background-color: #C9DD94;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            font-size: 15px;
+            margin-left: 20px;
+        }
+
+        header .navigation li .button:hover {
+            background: #fff;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 991px) {
+            header {
+                padding: 20px;
+            }
+
+            section {
+                padding: 20px;
+                padding-bottom: 120px;
+            }
+
+            header .navigation {
+                display: none;
+            }
+
+            header .navigation.active {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
+                z-index: 10;
+            }
+
+            header .navigation li a {
+                font-size: 1.2em;
+                margin: 5px 0;
+            }
+
+            header .navigation li .button {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .toggle {
+                position: relative;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+                background: url(../static/images/menu.png);
+                background-size: 30px;
+                background-position: center;
+                background-repeat: no-repeat;
+                z-index: 10000;
+            }
+
+            .toggle.active {
+                position: fixed;
+                right: 20px;
+                background: url(../static/images/close.png);
+                background-size: 25px;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="bg"></div>
+        <!-- Navigation Bar -->
+        <header>
+            <a href="" class="logo">PohonLink</a>
+            <div class="toggle"></div>
+            <ul class="navigation">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Login</a></li>
+                <li><button class="button" type="button"><a href="#" class="mx-1">Sign Up</a></button></li>
+            </ul>
+        </header>
+    </section>
+
+    <script>
+        let menuToggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        menuToggle.onclick = function () {
+            menuToggle.classList.toggle('active')
+            navigation.classList.toggle('active')
+        }
+    </script>
+</body>
+
+</html>
