@@ -4,18 +4,45 @@ const Users = require('../models/Users');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 const loadAdmin = async (req, res) => {
+
     const { username } = req.user;
 
-    Users.findOne({ "username": username }, (err, obj) => {
-        if (err) {
-            console.log(err);
-            return;
-        }
+    var searchOption = {
+        "username": username
+    }
 
-        const { Links } = obj;
-        console.log(Links);
-        res.render('admin', { links: Links });
-    })
+    if (req.query.title) {
+        searchOption["Links.Title"] = { "$regex": req.query.title, "$options": "i" };
+    }
+
+    console.log(searchOption);
+
+    Users.aggregate([
+        { "$unwind": '$Links' },
+        {
+            "$match": {
+                "$and": [
+                    searchOption
+                ]
+            }
+        },
+        {
+            "$project": {
+                Links: 1
+            }
+        }]).exec((err, docs) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
+            //console.log(docs);
+            let arrID = docs.map((arr, index) => {
+                return arr.Links._id.valueOf();
+            })
+
+            res.render('admin', {userLink: docs, id: arrID})
+        })
 }
 
 const loadEdit = async (req, res) => {
