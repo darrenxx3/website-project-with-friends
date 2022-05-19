@@ -133,7 +133,7 @@ header .navigation li .button:hover {
         width: 30px;
         height: 30px;
         cursor: pointer;
-        background: url(images/menu.png);
+        background: url(../static/images/menu.png);
         background-size: 30px;
         background-position: center;
         background-repeat: no-repeat;
@@ -143,7 +143,7 @@ header .navigation li .button:hover {
     .toggle.active {
         position: fixed;
         right: 20px;
-        background: url(images/close.png);
+        background: url(../static/images/close.png);
         background-size: 25px;
         background-position: center;
         background-repeat: no-repeat;
