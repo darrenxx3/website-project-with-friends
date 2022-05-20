@@ -1,5 +1,14 @@
-body{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
     padding-top: 70px;
+    padding-bottom: 30px;
+    background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
 }
 
 .thumbnail {
@@ -8,9 +17,10 @@ body{
 }
 
 .thumb-post {
-    aspect-ratio:1;
-    object-fit: cover; /* Do not scale the image */
-    object-position: center center; /* Center the image within the element */
-    width : 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    /* Do not scale the image */
+    object-position: center center;
+    /* Center the image within the element */
+    width: 100%;
 }
-

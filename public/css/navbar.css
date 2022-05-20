@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
         
         * {
             margin: 0;
@@ -154,34 +145,3 @@
                 background-repeat: no-repeat;
             }
         }
-    </style>
-</head>
-
-<body>
-    <section>
-        <div class="bg"></div>
-        <!-- Navigation Bar -->
-        <header>
-            <a href="" class="logo">PohonLink</a>
-            <div class="toggle"></div>
-            <ul class="navigation">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Login</a></li>
-                <li><button class="button" type="button"><a href="#" class="mx-1">Sign Up</a></button></li>
-            </ul>
-        </header>
-    </section>
-
-    <script>
-        let menuToggle = document.querySelector('.toggle');
-        let navigation = document.querySelector('.navigation');
-        menuToggle.onclick = function () {
-            menuToggle.classList.toggle('active')
-            navigation.classList.toggle('active')
-        }
-    </script>
-</body>
-
-</html>

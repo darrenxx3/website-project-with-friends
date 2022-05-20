@@ -8,15 +8,15 @@
 #desain {
     width: auto;
     /*ukuran dari layout web yang akan digunakan*/
-    margin: 0px auto 0;
+    margin: auto;
     overflow: hidden;
     padding-top: 80px;
 }
 
 body {
-    background-color: #9c9c9c;
+    background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
     font-family: "Poppins", sans-serif;
-    font-weight: 300
+    font-weight: 300;
 }
 
 h5 {
