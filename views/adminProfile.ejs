@@ -28,13 +28,13 @@
                                         <div class="picture-container">
                                             <div class="picture">
                                                 <% if(User.image) {%>
-                                                <img src="<%= User.image %>" class="picture-src"
-                                                    id="wizardPicturePreview" title="">
-                                                <% }else{ %>
-                                                    <img src="../static/images/blankProfile.png" class="picture-src"
-                                                    id="wizardPicturePreview" title="">
-                                                <% } %>
-                                                <input type="file" id="wizard-picture" class="">
+                                                    <img src="<%= User.image %>" class="picture-src"
+                                                        id="wizardPicturePreview" title="">
+                                                    <% }else{ %>
+                                                        <img src="../static/images/blankProfile.png" class="picture-src"
+                                                            id="wizardPicturePreview" title="">
+                                                        <% } %>
+                                                            <input type="file" id="wizard-picture" class="">
                                             </div>
                                             <h6 class="">Choose Picture</h6>
                                         </div>
@@ -47,22 +47,32 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="inputbox mt-3 pt-2">
-                                            <input type="text" id="username" class="form-control" value="<%= User.username %>" autocomplete="off">
-                                            <span>Username</span>
+                                            <label for="username" class="fw-bold">Username</label>
+                                            <input type="text" id="username" class="form-control"
+                                                value="<%= User.username %>" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="inputbox mt-3 pt-2">
-                                            <input type="text" id="instagram" class="form-control" value="<%= User.instagram %>" autocomplete="off">
-                                            <span>Instagram</span>
+                                            <label for="username" class="fw-bold">Description</label>
+                                            <textarea type="text" id="description" class="form-control"
+                                                autocomplete="off" rows="2" cols="50"/><%= User.description %></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="inputbox mt-3 pt-2">
+                                            <label for="instagram" class="fw-bold">Instagram</label>
+                                            <input type="text" id="instagram" class="form-control "
+                                                value="<%= User.instagram %>" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="inputbox mt-3 pt-2">
-                                            <input type="text" id="tiktok" class="form-control" value="<%= User.tiktok %>" autocomplete="off">
-                                            <span>Tiktok</span>
+                                            <label for="tiktok" class="fw-bold">TikTok</label>
+                                            <input type="text" id="tiktok" class="form-control"
+                                                value="<%= User.tiktok %>" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -79,7 +89,8 @@
                                     </div>
                                 </div>
                                 <div class="mt-4">
-                                    <button id="btnProfile" class="btn btn-success w-100" type="button">Save Changes</button>
+                                    <button id="btnProfile" class="btn btn-success w-100" type="button">Save
+                                        Changes</button>
                                 </div>
                             </form>
                         </div>
@@ -89,7 +100,8 @@
                             <p>Warning! if you click delete account your all data on this account will forever gone.
                                 There's no option between yes or no, so act wisely. We can't restore your account.
                             </p>
-                            <button class="btn btn-outline-danger w-50" role="button" id="btnDel">Delete Account</button>
+                            <button class="btn btn-outline-danger w-50" role="button" id="btnDel">Delete
+                                Account</button>
                         </div>
                     </div>
                 </div>
@@ -103,6 +115,7 @@
         </script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="../static/js/editProfile.js"></script>
+    <script src="../static/js/adminNavbar.js"></script>
 </body>
 
 </html>

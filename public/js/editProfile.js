@@ -6,6 +6,8 @@ var insta = document.getElementById("instagram");
 var tiktok = document.getElementById("tiktok");
 var newPass = document.getElementById("curPass");
 var confirmPass = document.getElementById("newPass");
+var description = document.getElementById("description");
+
 
 var tempFile
 picture.addEventListener("change", (e) => {
@@ -45,6 +47,7 @@ btnSubmit.addEventListener("click", async (e) => {
     formData.append("tiktok", tiktok.value);
     formData.append("newPassword", confirmPass.value);
     formData.append("curPassword", password);
+    formData.append("description", description.value);
 
     // sendData('/api/update', 'PATCH', formData,'/admin');
     await fetch("/api/profile", {

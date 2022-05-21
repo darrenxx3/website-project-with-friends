@@ -14,7 +14,11 @@
           </li>
         </ul>
         <form class="d-flex">
-          <button class="btn btn-outline-danger" type="button">Log Out</button>
+          <button class="btn text-white mx-1" type="button" onclick="copyClipboard('<%= link %>')" 
+            style="background: linear-gradient(90deg, #0367a6 0%, #008997 74%);">
+             Copy My Link              
+            </button>
+          <button class="btn btn-outline-danger mx-1" type="button" onclick="logOut()">Log Out</button>
         </form>
       </div>
     </div>

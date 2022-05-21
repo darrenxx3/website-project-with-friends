@@ -12,19 +12,20 @@
 </head>
 
 <body>
-    <div class="text-center">
+    <div class="text-center mb-3">
         <img src="<%= user.image%>" class="rounded-circle my-4" id="profilePict">
         <h4><b>
-                <%= user.username %>
-            </b></h4>
+            <%= user.username %>
+        </b></h4>
+        <h5>"<%= user.description %>"</h5>
     </div>
     <div class="container">
         <!-- Product Card -->
-        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-2">
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-2 justify-content-center">
             <% user.Links.forEach(link=> { %>
                 <a href="<%= link.URL %>" target="_blank" class="text-decoration-none">
-                    <div class="shadow col mt-2">
-                        <div class="card h-100">
+                    <div class="shadow col my-2">
+                        <div class="card h-100 border-radius">
                             <div class="card-img-top p-2 ">
                                 <img class="itemImage w-100 border-radius" src="<%= link.Image %>">
                             </div>
@@ -32,6 +33,7 @@
                                 <h5 class="card-title">
                                     <%= link.Title %>
                                 </h5>
+                                <hr class="w-50 mx-auto" style="height: 2px; background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);">
                                 <p class="card-text">
                                     <b>
                                         <%= link.Price.Currency %>
@@ -50,14 +52,14 @@
         <div class="content mt-5">
             <div class="d-flex justify-content-center">
                 <% if(user.instagram) { %>
-                    <div class="logo me-3 mb-3">
+                    <div class="logo me-3 mb-3" id="instagram">
                         <a target="_blank" href="https://www.instagram.com/<%= user.instagram %>">
                             <img src="../static/images/instagram.png" class="center" alt="">
                         </a>
                     </div>
                     <% } %>
                  <% if(user.tiktok){ %>
-                    <div class="logo  me-3 mb-3">
+                    <div class="logo  me-3 mb-3" id="tiktok""> 
                         <a target="_blank" href="https://www.tiktok.com/@<%= user.tiktok %>"">
                             <img src=" ../static/images/tiktok.png" class="center" alt="">
                         </a>

@@ -159,15 +159,17 @@ const loadProfile = async (req, res) => {
         (err, obj) => {
             if (err) { res.status(404); return; }
 
+            let link = `localhost:3000/link/${username}`;
+
             console.log(obj);
-            res.render('adminProfile', { User: obj });
+            res.render('adminProfile', { User: obj, link: link});
         })
 
 }
 
 const updateUser = async (req, res) => {
     const { username, password } = req.user;
-    const { instagram, tiktok, curPassword, newPassword } = req.body;
+    const { instagram, tiktok, description, curPassword, newPassword } = req.body;
 
     bcrypt.compare(curPassword, password, async (err, response) => {
         if (err || !response) {
@@ -178,6 +180,7 @@ const updateUser = async (req, res) => {
             var updtUser = {
                 instagram: instagram,
                 tiktok: tiktok,
+                description: description,
             };
 
             if (req.file) updtUser.image = '/images/' + req.file.filename;

@@ -1,5 +1,14 @@
 .card {
+    /* border: double 5px transparent;
+    background-image: linear-gradient(white, white),
+        linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
+    background-origin: border-box;
+    background-clip: content-box, border-box; */
     color: #000000;
+}
+
+.card:hover{
+    box-shadow: 0 0 11px #9DCF94; 
 }
 
 #profilePict {
@@ -21,12 +30,29 @@
 .logo {
     height: 50px;
     width: 50px;
-    background-color: #000000;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+#instagram {
+    border:2px solid #E1306C;
+}
+
+#instagram:hover {
+    box-shadow: 0 0 11px #E1306C; 
+}
+
+#tiktok{
+    border: 2px solid black;
+}
+
+#tiktok:hover{
+    box-shadow: 0 0 11px black; 
+}
+
+
 
 .logo a img {
     height: 50%;

@@ -52,7 +52,7 @@ router.route('/logout')
     .get((req, res) => {
         console.log(req);
         req.logOut();
-        res.redirect('/login');
+        res.sendStatus(200);
     })
 
 router.route('/deleteUser')
