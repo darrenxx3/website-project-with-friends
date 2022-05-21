@@ -41,7 +41,9 @@ const loadAdmin = async (req, res) => {
                 return arr.Links._id.valueOf();
             })
 
-            res.render('admin', {userLink: docs, id: arrID})
+            let link = `localhost:3000/link/${username}`;
+
+            res.render('admin', {userLink: docs, id: arrID, link:link})
         })
 }
 

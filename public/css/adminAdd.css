@@ -1,5 +1,23 @@
+
 body {
-    padding: 70px;
+    padding-top: 30px;
+    background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
+}
+
+.container{
+ background-color: white;   
+ border-top-right-radius: 10px;
+ border-top-left-radius: 10px;
+ padding: 30px;
+}
+
+.container a{
+    text-decoration: none;
+    color: black;
+}
+
+.container a:hover{
+    border-bottom: 2px solid black;
 }
 
 /*Profile Pic Start*/
@@ -22,24 +40,20 @@ body {
     -webkit-transition: all 0.2s;
 }
 
+.picture img{
+    border-radius: 10%;
+}
+
 .picture:hover {
-    border-color: limegreen;
-}
+    /* border-color: limegreen; */
+    position: relative;
+    border: 4px solid transparent;
+    border-radius: 10%;
+    background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
+    background-clip: padding-box;
+    padding: 4px;
 
-.content.ct-wizard-green .picture:hover {
-    border-color: #05ae0e;
-}
-
-.content.ct-wizard-blue .picture:hover {
-    border-color: #3472f7;
-}
-
-.content.ct-wizard-orange .picture:hover {
-    border-color: #ff9500;
-}
-
-.content.ct-wizard-red .picture:hover {
-    border-color: #ff3b30;
+    
 }
 
 .picture input[type="file"] {
@@ -64,3 +78,7 @@ body {
 }
 
 /*Profile Pic End*/
+
+#btnSubmit{
+    margin: 20px 0 20px 0;
+}

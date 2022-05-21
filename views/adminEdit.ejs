@@ -13,16 +13,26 @@
 
 <body>
     <div class="container">
+        <a href="/admin">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+              </svg>
+            Back
+        </a>
         <form>
-
             <div class="d-flex justify-content-center">
                 <div class="d-flex flex-column mr-1">
                     <div class="d-flex flex-row">
                         <div class="profile-pic">
                             <div class="picture-container">
                                 <div class="picture">
+                                    <% if(link.Image) {%>
                                         <img src="<%= link.Image %>" class="picture-src"
                                         id="wizardPicturePreview" title="">
+                                    <% } else {%>
+                                        <img src="../static/images/+.png" alt="Insert Image here" class="picture-src"
+                                        id="wizardPicturePreview" >
+                                    <% } %>
                                     <input type="file" id="wizard-picture" class="">
                                 </div>
                                 <h6 class="">Choose Picture</h6>
@@ -74,7 +84,7 @@
                     <input id="Price" class="form-control" aria-describedby="selectCurrency" value="<%= link.Price.Value %>" autocomplete="off">
                 </div>
             </div>
-            <button  type="button" class="btn btn-primary w-100" id="btnSubmit">
+            <button  type="button" class="btn btn-success w-100" id="btnSubmit">
                 Submit
             </button>
         </form>

@@ -129,13 +129,6 @@ input::-webkit-inner-spin-button {
     font-size: 10px
 }
 
-.btn-primary,
-.btn-primary:active,
-.btn-primary:visited {
-    background-color: black !important;
-}
-
-
 /*buat footer*/
 footer {
     margin-top: 30px;

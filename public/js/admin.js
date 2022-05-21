@@ -26,8 +26,24 @@ async function delData(id) {
     })
 }
 
-// var btnSearch = document.getElementById("btnSearch");
-// var filter = document.getElementById("filter");
-// btnSearch.addEventListener("click", (e) => {
+function copyClipboard(){
 
-// })
+    let link = document.getElementById("basic-url");
+    navigator.clipboard.writeText(link.value);
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Copied to clipboard'
+      })
+}
