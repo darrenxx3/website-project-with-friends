@@ -46,7 +46,7 @@ body {
     max-width: var(--max-width);  
     /* overflow: hidden;   */
     position: relative;  
-    width: 50%;  
+    width: 80%;  
 }  
 .container__form {  
     height: 100%;  
