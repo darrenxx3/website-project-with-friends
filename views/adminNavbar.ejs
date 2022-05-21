@@ -1,29 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #C4C4C4;">
+<nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top" style="border-bottom: 2px solid #5EBD96;">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mx-5 mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin">Links</a>
-                </li>
-                <li class="nav-item mx-4">
-                    <a class="nav-link active" aria-current="page" href="#">Appearance</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/admin/profile">User Profile</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item mx-4">
-                         <a class="navbar-brand ms-5 fw-bold" href="#">LOGO</a>
-                    </li>
-                </ul>
-            </form>
-        </div>
+      <a class="navbar-brand mx-4" href="/"><b>PohonLink</b></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Links</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/profile">Profile</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <button class="btn text-white mx-1" type="button" onclick="copyClipboard('<%= link %>')" 
+            style="background: linear-gradient(90deg, #0367a6 0%, #008997 74%);">
+             Copy My Link              
+            </button>
+          <button class="btn btn-outline-danger mx-1" type="button" onclick="logOut()">Log Out</button>
+        </form>
+      </div>
     </div>
-</nav>
+  </nav> 

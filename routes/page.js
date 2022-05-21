@@ -9,7 +9,6 @@ router.route('/link/:username')
 router.route('/admin')
     .get(loadAdmin)
 
-
 router.route('/admin/edit/:id')
     .get(loadEdit)
 

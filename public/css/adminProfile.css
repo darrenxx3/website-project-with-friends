@@ -8,15 +8,15 @@
 #desain {
     width: auto;
     /*ukuran dari layout web yang akan digunakan*/
-    margin: 0px auto 0;
+    margin: auto;
     overflow: hidden;
     padding-top: 80px;
 }
 
 body {
-    background-color: #9c9c9c;
+    background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
     font-family: "Poppins", sans-serif;
-    font-weight: 300
+    font-weight: 300;
 }
 
 h5 {
@@ -105,6 +105,10 @@ h4 {
     transition: 0.5s
 }
 
+textarea {
+    resize: none
+}
+
 .inputbox i {
     position: absolute;
     top: 13px;
@@ -128,13 +132,6 @@ input::-webkit-inner-spin-button {
     transform: translateX(-4px) translateY(-13px);
     font-size: 10px
 }
-
-.btn-primary,
-.btn-primary:active,
-.btn-primary:visited {
-    background-color: black !important;
-}
-
 
 /*buat footer*/
 footer {

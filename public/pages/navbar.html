@@ -1,5 +1,41 @@
-<header>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        section {
+            position: relative;
+            width: 100%;
+            padding: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #9DCF94;
+            background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96);
+        }
+
         header {
             position: absolute;
             top: 0;
@@ -14,7 +50,7 @@
         header .logo {
             position: relative;
             font-weight: 600;
-            color: #000;
+            color: #fff;
             text-decoration: none;
             font-size: 2em;
         }
@@ -30,7 +66,7 @@
 
         header .navigation li a {
             display: inline-block;
-            color: #000;
+            color: #fff;
             font-weight: 400;
             margin-left: 10px;
             padding: 8px 15px;
@@ -64,8 +100,9 @@
                 padding: 20px;
             }
 
-            .content {
-                flex-direction: column;
+            section {
+                padding: 20px;
+                padding-bottom: 120px;
             }
 
             header .navigation {
@@ -101,7 +138,7 @@
                 width: 30px;
                 height: 30px;
                 cursor: pointer;
-                background: url(images/menu.png);
+                background: url(../static/images/menu.png);
                 background-size: 30px;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -111,20 +148,40 @@
             .toggle.active {
                 position: fixed;
                 right: 20px;
-                background: url(images/close.png);
+                background: url(../static/images/close.png);
                 background-size: 25px;
                 background-position: center;
                 background-repeat: no-repeat;
             }
         }
     </style>
-    <a href="" class="logo">PohonLink</a>
-    <div class="toggle"></div>
-    <ul class="navigation">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">Login</a></li>
-        <li><button class="button" type="button"><a href="#" class="mx-1">Sign Up</a></button></li>
-    </ul>
-</header>
+</head>
+
+<body>
+    <section>
+        <div class="bg"></div>
+        <!-- Navigation Bar -->
+        <header>
+            <a href="" class="logo">PohonLink</a>
+            <div class="toggle"></div>
+            <ul class="navigation">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Login</a></li>
+                <li><button class="button" type="button"><a href="#" class="mx-1">Sign Up</a></button></li>
+            </ul>
+        </header>
+    </section>
+
+    <script>
+        let menuToggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.navigation');
+        menuToggle.onclick = function () {
+            menuToggle.classList.toggle('active')
+            navigation.classList.toggle('active')
+        }
+    </script>
+</body>
+
+</html>

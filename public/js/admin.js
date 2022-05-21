@@ -26,8 +26,3 @@ async function delData(id) {
     })
 }
 
-// var btnSearch = document.getElementById("btnSearch");
-// var filter = document.getElementById("filter");
-// btnSearch.addEventListener("click", (e) => {
-
-// })

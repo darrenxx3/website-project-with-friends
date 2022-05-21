@@ -72,8 +72,7 @@ const getLink = (req, res) => {
     const { username } = req.params;
     
     Users.findOne({ "username": username }, (err, docs) => {
-        if(err){
-            console.log(err);
+        if(err || !docs){
             res.render('404');
             return;
         }
