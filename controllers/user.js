@@ -86,7 +86,7 @@ const checkEmail = (req, res) => {
 
     Users.findOne({ "email": email }, 
     (err, docs) => {
-        if(err){
+        if(err || !docs){
             res.sendStatus(404);
             return;
         }
