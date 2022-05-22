@@ -1,3 +1,7 @@
+body{
+    background: linear-gradient(to right, #0367a6, #008997);  
+}
+
 .card {
     /* border: double 5px transparent;
     background-image: linear-gradient(white, white),
@@ -37,19 +41,21 @@
 }
 
 #instagram {
-    border:2px solid #E1306C;
+    /* background-color: white;
+    border:2px solid #E1306C; */
 }
 
 #instagram:hover {
-    box-shadow: 0 0 11px #E1306C; 
+    box-shadow: 0 0 11px white; 
 }
 
 #tiktok{
-    border: 2px solid black;
+    /* background-color: white;
+    border: 2px solid black; */
 }
 
 #tiktok:hover{
-    box-shadow: 0 0 11px black; 
+    box-shadow: 0 0 11px white; 
 }
 
 
@@ -70,7 +76,7 @@
 }
 
 .card-img-top{
-    background: radial-gradient(#111 50%, #000 100%);
+    background: radial-gradient(white);
     overflow: hidden;
     position: relative;
     border-radius: 20px 20px 0px 0px;
@@ -83,5 +89,5 @@
 
 .card-img-top:hover img{
     transform: scale(1.1) translateY(-20px);
-    opacity: 0.3;
+    opacity: 0.5;
 }
