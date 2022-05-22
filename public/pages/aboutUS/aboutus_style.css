@@ -47,7 +47,7 @@ body {
     object-position: center center;
     /* Center the image within the element */
     width: 100%;
-    opacity: 0.5;
+    opacity: 0.9;
 }
 
 .container {
@@ -157,6 +157,24 @@ header .navigation li .button {
 header .navigation li .button:hover {
     background: #fff;
     opacity: 0.8;
+}
+
+.avatar{
+    aspect-ratio: 1;
+    object-fit: cover;
+    /* Do not scale the image */
+    object-position: center center;
+    /* Center the image within the element */
+    width: 100%;
+}
+
+.philosophy{
+    aspect-ratio: 1;
+    object-fit: cover;
+    /* Do not scale the image */
+    object-position: left center;
+    /* Center the image within the element */
+    width: 100%;
 }
 
 @media (max-width: 991px) {
