@@ -68,3 +68,20 @@
     margin-right: auto;
     width: 50%;
 }
+
+.card-img-top{
+    background: radial-gradient(#111 50%, #000 100%);
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px 20px 0px 0px;
+} 
+
+.card-img-top img{
+    transform: scale(1.3);
+    transition: all 0.3s ease-out;
+}
+
+.card-img-top:hover img{
+    transform: scale(1.1) translateY(-20px);
+    opacity: 0.3;
+}

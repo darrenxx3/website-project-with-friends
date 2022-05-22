@@ -24,8 +24,8 @@
         <div class="row row-cols-lg-4 row-cols-md-3 row-cols-2 justify-content-center">
             <% user.Links.forEach(link=> { %>
                 <a href="<%= link.URL %>" target="_blank" class="text-decoration-none">
-                    <div class="shadow col my-2">
-                        <div class="card h-100 border-radius">
+                    <div class="shadow col my-2" style="border-radius: 20px;">
+                        <div class="card h-100 border-radius" style="border-radius: 20px;">
                             <div class="card-img-top p-2 ">
                                 <img class="itemImage w-100 border-radius" src="<%= link.Image %>">
                             </div>
