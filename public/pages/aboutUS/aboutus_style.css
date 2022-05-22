@@ -26,20 +26,28 @@ body {
     width: auto;
     /*ukuran dari layout web yang akan digunakan*/
     margin: 0px auto 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
  
  /*code dari carousel*/
  .carousel-item {
-    height: 25rem;
+    height: 100%;
+    width: 100%;
     background: #777;
     color: white;
     position: relative;
 }
 
 .carousel-item .imagebox{
-    max-width: 100%;
-    max-height: 100%;
+    /* max-width: 100%;
+    max-height: 100%; */
+    aspect-ratio: 2.75/1;
+    object-fit: cover;
+    /* Do not scale the image */
+    object-position: center center;
+    /* Center the image within the element */
+    width: 100%;
+    opacity: 0.5;
 }
 
 .container {
@@ -63,8 +71,8 @@ body {
 }
 
 .carousel-caption {
-    bottom: 100px;
-
+    /* bottom: 100px; */
+    font-size: 2vw;
 }
 
 .carousel-caption h5 {
