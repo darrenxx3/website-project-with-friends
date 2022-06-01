@@ -23,7 +23,9 @@ body {
     background-size: cover;   */
     display: grid;  
     height: 100vh;  
-    place-items: center;  
+    place-items: center; 
+    background: #9DCF94;
+    background: linear-gradient(to right, #C9DD94, #9DCF94, #5EBD96); 
 }  
 .form__title {  
     font-weight: 300;  
